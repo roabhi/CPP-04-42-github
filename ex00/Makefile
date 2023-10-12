@@ -6,7 +6,7 @@
 #    By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 17:59:49 by rabril-h          #+#    #+#              #
-#    Updated: 2023/10/11 19:52:34 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/10/12 15:38:13 by rabril-h         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,12 +15,16 @@ NAME = Polymorphism
 SRCS = main.cpp \
 				./classes/Animal.cpp \
 				./classes/Dog.cpp \
-				./classes/Cat.cpp
+				./classes/Cat.cpp \
+				./classes/WrongAnimal.cpp \
+				./classes/WrongCat.cpp \
 
 
 HEADERS = ./classes/Animal.hpp \
 				./classes/Dog.hpp \
 				./classes/Cat.hpp \
+				./classes/WrongAnimal.hpp \
+				./classes/WrongCat.hpp \
 
 CC = c++
 RM = rm -f

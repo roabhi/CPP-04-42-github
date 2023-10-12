@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/11 18:00:53 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/11 18:52:54 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/12 15:44:20 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,6 +14,8 @@
 #include "./classes/Animal.hpp"
 #include "./classes/Dog.hpp"
 #include "./classes/Cat.hpp"
+#include "./classes/WrongAnimal.hpp"
+#include "./classes/WrongCat.hpp"
 
 int main(void)
 {
@@ -37,6 +39,19 @@ int main(void)
 	delete dogOne;
 	delete catOne;
 	delete catTwo;
+
+	const WrongAnimal* wrongMeta = new WrongAnimal();
+	const WrongCat* catOneWrong = new WrongCat();
+	const WrongCat* catTwoWrong = new WrongCat();
+
+	wrongMeta->makeSound();
+	catOneWrong->makeSound();
+	catTwoWrong->makeSound();
+	wrongMeta->makeSound();
+
+	delete wrongMeta;
+	delete catOneWrong;
+	delete catTwoWrong;
 
 	return (0);
 }
