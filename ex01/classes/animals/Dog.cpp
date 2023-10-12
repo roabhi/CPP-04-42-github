@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/11 18:40:53 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/12 20:31:04 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/12 20:37:55 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -59,10 +59,10 @@ std::string Dog::getType() const
 
 void Dog::setIdeas(std::string const &ideas) const
 {
-	_brain->setIdeas(ideas);
+	this->_brain->setIdeas(ideas);
 }
 
 void Dog::showIdeas() const
 {
-	_brain->showIdeas();
+	this->_brain->showIdeas();
 }

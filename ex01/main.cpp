@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/12 17:09:23 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/12 20:31:33 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/12 20:40:11 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -81,9 +81,7 @@ int main(void)
 
 	
 		for (int i = 0; i < 10; i++)
-			delete animals[i];
-		std::cout << std::endl << "End of second testing block";
-		std::cout << std::endl << std::endl; 		
+			delete animals[i];		 		
 		
 	}
 

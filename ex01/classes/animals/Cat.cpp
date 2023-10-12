@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/11 19:59:59 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/12 20:30:45 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/12 20:38:37 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -59,10 +59,10 @@ std::string Cat::getType() const
 
 void Cat::setIdeas(std::string const &ideas) const
 {
-	_brain->setIdeas(ideas);
+	this->_brain->setIdeas(ideas);
 }
 
 void Cat::showIdeas() const
 {
-	_brain->showIdeas();
+	this->_brain->showIdeas();
 }
