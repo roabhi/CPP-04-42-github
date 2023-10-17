@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 16:50:01 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/17 21:14:56 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/17 22:38:07 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -24,13 +24,22 @@ public:
 
 	std::string const & getName(void) const;
 	void               equip(AMateria* m);
-	//void               unequip(int idx);
+    void               unequip(int idx);
 	void               use(int idx, ICharacter& target);
+
+	void               listMaterias() const;
+	unsigned int       getFloorCapacity() const;
+	unsigned int       getFloorIdx() const;
 
 private:
 
 	std::string     _name;
 	int             _idx;
     AMateria		*_inventory[4];
+	AMateria		**_floor;
+	unsigned int	_floorCapacity;
+	unsigned int	_floorIdx;
+	void		    dropMateria(AMateria &m);
+	void	    	clearFloor();	
 
 };
