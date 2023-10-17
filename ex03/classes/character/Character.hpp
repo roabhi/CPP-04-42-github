@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 16:50:01 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/15 18:11:23 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/17 21:14:56 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -23,13 +23,14 @@ public:
 	Character& operator=(const Character& inst);
 
 	std::string const & getName(void) const;
-	//void               equip(Amateria* m);
+	void               equip(AMateria* m);
 	//void               unequip(int idx);
-	//void               use(int idx, Icharacter& target);)
+	void               use(int idx, ICharacter& target);
 
 private:
 
-	std::string _name;
-	int         _idx;
+	std::string     _name;
+	int             _idx;
+    AMateria		*_inventory[4];
 
 };

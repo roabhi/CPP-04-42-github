@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 16:29:13 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/15 20:09:44 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/17 21:33:21 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -16,12 +16,13 @@
 
 int main(void)
 {
-	const Character *Pepe = new Character("Pepe");
-	const Character *Anon = new Character();
+	Character *Pepe = new Character("Pepe");
+	Character *Anon = new Character();
 
-	const Ice *hielo = new Ice();
+	Ice *hielo = new Ice();
 
-    (void) hielo;
+	Pepe->equip(hielo);
+	Anon->equip(hielo);
 
 
 	delete Pepe;
