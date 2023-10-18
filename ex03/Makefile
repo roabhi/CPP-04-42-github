@@ -6,7 +6,7 @@
 #    By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/15 16:26:40 by rabril-h          #+#    #+#              #
-#    Updated: 2023/10/15 19:58:31 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/10/18 21:52:03 by rabril-h         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,14 +15,19 @@ NAME = Interface
 SRCS = main.cpp \
 			./classes/character/Character.cpp \
 			./classes/materia/AMateria.cpp \
+			./classes/materia/MateriaSource.cpp \
 			./classes/materia/Ice.cpp \
+			./classes/materia/Cure.cpp \
 
 
 
 HEADERS = ./classes/character/ICharacter.hpp \
 			./classes/character/Character.hpp \
+			./classes/materia/IMateriaSource.hpp \
+			./classes/materia/MateriaSource.hpp \
 			./classes/materia/AMateria.hpp \
 			./classes/materia/Ice.hpp \
+			./classes/materia/Cure.hpp \
 
 
 CC = c++

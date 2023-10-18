@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 19:46:47 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/15 20:03:23 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/18 20:15:14 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -48,5 +48,5 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target) const
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << "*" <<std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" <<std::endl;
 }
