@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 17:02:27 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/18 19:16:24 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/19 21:25:57 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -136,6 +136,8 @@ void Character::use(int idx, ICharacter& target)
 		return ;
 	if (this->_inventory[idx] != NULL)
 		this->_inventory[idx]->use(target);
+	else
+		std::cout << this->getName() << " cannot use materia on " << target.getName() << std::endl;
 }
 
 
@@ -143,14 +145,10 @@ void		Character::dropMateria(AMateria &materia)
 {
 	if ((this->_floorCapacity  <= this->_floorIdx))
 	{
-		//std::cout << "Floor Capacity is " << std::endl;
-		//std::cout << this->_floorCapacity << std::endl;
-
-
 		this->_floorCapacity += 1;
 
-		std::cout << "Floor Capacity is " << std::endl;
-		std::cout << this->_floorCapacity << std::endl;
+		//std::cout << "Floor Capacity is " << std::endl;
+		//std::cout << this->_floorCapacity << std::endl;
 		
 		AMateria** newFloor = new AMateria*[this->_floorCapacity];
 		for (unsigned int i = 0; i < this->_floorCapacity - 1; i++)
@@ -164,24 +162,16 @@ void		Character::dropMateria(AMateria &materia)
 		this->_floor = auxFloor;	
 		for (unsigned int i = 0; i < this->_floorCapacity - 1; i++)
 		{
-			std::cout << "Llego aqui" << std::endl;
-			this->_floor[i] = newFloor[i];
-			//std::cout << this->_floor[i]->getType() << std::endl;
-		}	
-			
-		 
-		std::cout << "Floor idx es " << this->getFloorIdx() << std::endl;
+			this->_floor[i] = newFloor[i];			
+		}	 
 		
 		this->_floor[this->_floorIdx] = &materia;
 		this->_floorIdx++;
 
-			std::cout << "Llego aqui" << std::endl;
 		delete [] newFloor;
 	}
 	else
 	{
-		std::cout << "Llego aqui" << std::endl;
-
 		this->_floor[this->_floorIdx] = &materia;
 		this->_floorIdx++;
 	}
@@ -197,7 +187,7 @@ void Character::unequip(int idx)
 		return ;
 	}
 	if (this->_inventory[idx] == NULL)
-		std::cout << "Unequip err: there's no weapon in slot: " << idx << std::endl;
+		std::cout << "Unequip err: there's no weapon in slot: " << idx << " for character " << this->getName() <<std::endl;
 	std::cout << "Character " << name << " unequiped " << idx << std::endl;
 	this->dropMateria(*_inventory[idx]);
 	this->_inventory[idx] = NULL;
