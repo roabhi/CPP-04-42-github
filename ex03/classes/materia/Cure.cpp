@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/18 19:57:12 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/18 20:06:43 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 20:48:15 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -35,7 +35,9 @@ Cure::~Cure(void)
 Cure& Cure::operator=(const Cure& inst)
 {
 	std::cout << "Cure assigment operator called" <<  std::endl;
-	this->_type = inst._type;
+	if (this != &inst) {
+		this->_type = inst._type;
+	}
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 19:46:47 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/18 20:15:14 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 21:08:24 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -35,7 +35,9 @@ Ice::~Ice(void)
 Ice& Ice::operator=(const Ice& inst)
 {
 	std::cout << "Ice assigment operator called" <<  std::endl;
-	this->_type = inst._type;
+	if (this != &inst) {
+		this->_type = inst._type;
+	}
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/18 20:40:06 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/18 21:29:58 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 22:50:06 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -24,9 +24,10 @@ MateriaSource::MateriaSource(const MateriaSource &inst)
 	std::cout << "MateriaSource copy constructor called" << std::endl;
 	for(int i = 0; i < 4; i++)
 	{
-		if (inst.materias[i] == NULL)
-			this->materias[i] = NULL;
-		else
+		if (this->materias[i] != NULL)
+			delete materias[ i ];
+		this->materias[i] = NULL;
+		if (inst.materias[ i ] != NULL)
 			this->materias[i] = inst.materias[i]->clone();
 	}	
 }
@@ -73,6 +74,10 @@ void MateriaSource::learnMateria(AMateria* m)
 		{
 			this->materias[i] = m;
 			return ;
+		}
+		if (i + 1 == 4)
+		{
+			delete m;
 		}
 	}
 

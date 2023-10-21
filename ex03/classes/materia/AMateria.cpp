@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 18:24:12 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/15 20:01:58 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 21:23:04 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -14,34 +14,36 @@
 
 AMateria::AMateria(void) : _type("unknown")
 {
-	std::cout << "Default constructor for Materia " << this->getType() << std::endl;
+	std::cout << "Default constructor for AMateria " << this->getType() << std::endl;
 
 	return;
 }
 
 AMateria::AMateria(const std::string & type) : _type(type)
 {
-	std::cout << "Name constructor for Materia " << this->getType() << std::endl;
+	std::cout << "Name constructor for AMateria " << this->getType() << std::endl;
 
 	return ;
 }
 
 AMateria::AMateria(const AMateria &inst)
 {
-	this->_type = inst._type;
+	std::cout << "Copy constructor for AMateria " << this->getType() << std::endl;
+    //this->_type = inst._type;
 	*this = inst;
 }
 
 AMateria& AMateria::operator=(const AMateria& inst)
 {
-	std::cout << "Materia assigment operator called " << std::endl;
-	this->_type = inst._type;
+	std::cout << "AMateria assigment operator called " << std::endl;
+	if (this != &inst)
+		this->_type = inst._type;
 	return (*this);
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << "Materia default destrcutor called" << std::endl;
+	std::cout << "AMateria default destructor called" << std::endl;
 	return ;
 }
 

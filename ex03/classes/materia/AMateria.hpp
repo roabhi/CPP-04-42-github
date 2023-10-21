@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 18:18:19 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/15 20:01:41 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 21:14:48 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -29,7 +29,7 @@ public:
 	AMateria& operator=(const AMateria& inst);
 	virtual ~AMateria(void);
 	
-	std::string const & getType() const; //Returns the materia type
+	std::string const & getType() const; 
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter& target) const;
 

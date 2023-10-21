@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 16:43:41 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/18 20:25:42 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 22:04:06 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,6 +27,9 @@ public:
 	virtual void equip(AMateria* m) = 0;
 	virtual void unequip(int idx) = 0;
 	virtual void use(int idx, ICharacter& target) = 0;
+
+	virtual void printFloor(void) const = 0;
+	virtual void printMaterias( void ) const = 0;
 
 };
 
