@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 17:02:27 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/19 21:25:57 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/21 23:58:51 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -72,9 +72,35 @@ Character& Character::operator=(const Character& inst)
 
 	if (this != &inst)
 	{
-		this->_name = this->getName();
-		this->_idx = 0;
-	}	
+		this->_name = inst._name;
+		for (unsigned int i = 0; i < 4; i++)
+		{
+			if (this->_inventory[i] == NULL)
+				std::cout << i << std::endl;
+			if (this->_inventory[i] != NULL)
+			{
+				delete this->_inventory[i];
+				this->_inventory[i] = NULL;
+			}
+			this->_inventory[i] = NULL;
+			
+			if (inst._inventory[i] == NULL)
+				this->_inventory[i] = NULL;
+			else if (inst._inventory[i] != NULL)
+			{	
+				this->_inventory[i] = inst._inventory[i]->clone();
+			}
+		}
+	}
+
+	this->_floorCapacity = inst.getFloorCapacity();
+	this->_floorCapacity = inst.getFloorIdx();
+	AMateria** newFloor = new AMateria*[this->_floorCapacity];
+	if (this->_floor != NULL)
+		delete [] this->_floor;
+	this->_floor = newFloor;
+	for (unsigned int i = 0; i < this->_floorCapacity; i++)
+		this->_floor[i] = NULL;
 
 	return (*this);
 }
@@ -82,6 +108,24 @@ Character& Character::operator=(const Character& inst)
 Character::~Character(void)
 {
 	std::cout << "Character default destructor called for " << this->getName() << std::endl;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i] != NULL)
+		{
+			for (unsigned int j = 0; j < this->_floorCapacity; j++)
+			{
+				if (this->_floor[j] == this->_inventory[i])
+					this->_floor[j] = NULL;
+			}
+				
+			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
+	}
+	
+	this->clearFloor();
+	delete [] this->_floor;
 
 	return ;
 }
@@ -97,7 +141,7 @@ void Character::equip(AMateria* m)
 {
 	unsigned int is_equipped = 0;
 
-	if ( this->_idx == -1 || m == NULL)
+	if ( m == NULL)
 	{
 		std::cout << "Character " << this->_name << " couldn' t equip!." << std::endl;
 		return ;
@@ -116,11 +160,12 @@ void Character::equip(AMateria* m)
 			this->_inventory[idx] = m;
 			std::cout << "Character " << this->getName() << " equiped " << m->getType() << " at " << idx << std::endl;
 			is_equipped = 1;
+			this->_idx++;
 			return ;
 		}
 	}
 
-	if (!is_equipped)
+	if (!is_equipped || this->_idx == 4)
 	{
 		std::cout << "Character " << this->getName() << " has no space left!" << std::endl;
 		this->dropMateria(*m);
@@ -216,4 +261,14 @@ void Character::listMaterias() const
 		else
 			std::cout << "Character " << this->getName() << " has no equipment in slot " << i << std::endl;
 	}
+}
+
+void		Character::clearFloor()
+{
+	for (unsigned int i = 0; i < this->_floorCapacity; i++)
+		if (this->_floor[i] != NULL)
+		{
+			delete this->_floor[i];
+			this->_floor[i] = NULL;
+		}
 }
