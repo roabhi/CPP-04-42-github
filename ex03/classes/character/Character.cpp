@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 17:02:27 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/21 23:58:51 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/22 16:28:54 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -153,6 +153,19 @@ void Character::equip(AMateria* m)
 			return ; // trying to add the same Materia
 	}
 
+	if (this->_floor != NULL)
+	{
+		for ( unsigned int i = 0; i < this->_floorIdx; i++ )
+		{
+			if ( this->_floor[ i ] == m )
+			{
+				std::cout << "This materia has been thrown before" << std::endl;
+				return ;
+			}
+		}
+			
+	}
+
 	for (int idx = 0; idx < 4; idx++)
 	{
 		if (this->_inventory[idx] == NULL)
@@ -188,7 +201,7 @@ void Character::use(int idx, ICharacter& target)
 
 void		Character::dropMateria(AMateria &materia)
 {
-	if ((this->_floorCapacity  <= this->_floorIdx))
+	if ((this->_floorCapacity -1  <= this->_floorIdx))
 	{
 		this->_floorCapacity += 1;
 
@@ -197,10 +210,12 @@ void		Character::dropMateria(AMateria &materia)
 		
 		AMateria** newFloor = new AMateria*[this->_floorCapacity];
 		for (unsigned int i = 0; i < this->_floorCapacity - 1; i++)
+		{
 			newFloor[i] = this->_floor[i];
-		delete [] this->_floor;
-
-	
+			//delete this->_floor[i];
+		}
+			
+		delete [] this->_floor;	
 		
 		AMateria** auxFloor = new AMateria*[this->_floorCapacity];
 
@@ -265,10 +280,18 @@ void Character::listMaterias() const
 
 void		Character::clearFloor()
 {
-	for (unsigned int i = 0; i < this->_floorCapacity; i++)
-		if (this->_floor[i] != NULL)
+	if (this->_floor)
+	{
+		for (unsigned int i = 0; i < this->_floorCapacity; i++)
 		{
-			delete this->_floor[i];
-			this->_floor[i] = NULL;
+			if (this->_floor[i] != NULL)
+			{
+				delete this->_floor[i];
+				this->_floor[i] = NULL;
+			}
 		}
+		
+	}
+
+
 }
