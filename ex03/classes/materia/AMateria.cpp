@@ -6,7 +6,7 @@
 //   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2023/10/15 18:24:12 by rabril-h          #+#    #+#             //
-//   Updated: 2023/10/21 21:23:04 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/22 17:55:12 by rabril-h         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -29,7 +29,6 @@ AMateria::AMateria(const std::string & type) : _type(type)
 AMateria::AMateria(const AMateria &inst)
 {
 	std::cout << "Copy constructor for AMateria " << this->getType() << std::endl;
-    //this->_type = inst._type;
 	*this = inst;
 }
 

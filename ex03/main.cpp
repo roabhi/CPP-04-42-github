@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 07:49:24 by jsebasti          #+#    #+#             */
-//   Updated: 2023/10/21 22:56:57 by rabril-h         ###   ########.fr       //
+//   Updated: 2023/10/22 18:12:56 by rabril-h         ###   ########.fr       //
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ void    print_title( std::string msg, std::string clr_text, std::string clr_bord
 
 int main( void )
 {
+
+
+	{
 	print_title( "1. Creating MateriaSource", C_GREEN, C_YELLOW );
 	IMateriaSource* src = new MateriaSource();
 	std::cout << std::endl;
@@ -262,6 +265,10 @@ int main( void )
 
 	print_title( "11 -> SRC", C_RED, C_YELLOW );
 	delete src;
+	}
 
+
+
+	
 	return (0);
 }
