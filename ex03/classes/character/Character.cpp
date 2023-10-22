@@ -67,6 +67,7 @@ Character& Character::operator=(const Character& inst)
 
 	if (this != &inst)
 	{
+
 		// Delete inventory
 		for ( int i = 0; i < 4; i++ ) {
 			if (this->_inventory[i] != NULL)
@@ -101,6 +102,36 @@ Character& Character::operator=(const Character& inst)
 		this->_floorIdx = inst._floorIdx;
 	
 	}	
+		this->_name = inst._name;
+		for (unsigned int i = 0; i < 4; i++)
+		{
+			if (this->_inventory[i] == NULL)
+				std::cout << i << std::endl;
+			if (this->_inventory[i] != NULL)
+			{
+				delete this->_inventory[i];
+				this->_inventory[i] = NULL;
+			}
+			this->_inventory[i] = NULL;
+			
+			if (inst._inventory[i] == NULL)
+				this->_inventory[i] = NULL;
+			else if (inst._inventory[i] != NULL)
+			{	
+				this->_inventory[i] = inst._inventory[i]->clone();
+			}
+		}
+	}
+
+	this->_floorCapacity = inst.getFloorCapacity();
+	this->_floorCapacity = inst.getFloorIdx();
+	AMateria** newFloor = new AMateria*[this->_floorCapacity];
+	if (this->_floor != NULL)
+		delete [] this->_floor;
+	this->_floor = newFloor;
+	for (unsigned int i = 0; i < this->_floorCapacity; i++)
+		this->_floor[i] = NULL;
+
 
 	return (*this);
 }
@@ -108,6 +139,7 @@ Character& Character::operator=(const Character& inst)
 Character::~Character(void)
 {
 	std::cout << "Character default destructor called for " << this->getName() << std::endl;
+
 
 
 	//Delete inventory
@@ -130,6 +162,7 @@ Character::~Character(void)
 		this->_floor = NULL;
 	}
 	
+
 	return ;
 }
 
@@ -196,6 +229,7 @@ void Character::unequip(int idx)
 
 
 
+
 void	Character::printFloor( void ) const {
 	if (!this->_floor)
 	{
@@ -217,6 +251,7 @@ void	Character::printMaterias( void ) const {
 
 
 
+
 // Add a Materia to the floor
 
 void	Character::addFloor( AMateria &m ) {
@@ -225,6 +260,7 @@ void	Character::addFloor( AMateria &m ) {
 	this->_floor[this->_floorIdx] = &m;
 	this->_floorIdx++;
 }
+
 
 // Add a Materia to the inventory
 
@@ -309,4 +345,22 @@ AMateria	**copyFloor( AMateria **srcFloor, unsigned int newFloorLen )
 	}
 	
 	return (newFloor);
+}
+
+void		Character::clearFloor()
+{
+	if (this->_floor)
+	{
+		for (unsigned int i = 0; i < this->_floorCapacity; i++)
+		{
+			if (this->_floor[i] != NULL)
+			{
+				delete this->_floor[i];
+				this->_floor[i] = NULL;
+			}
+		}
+		
+	}
+
+
 }
